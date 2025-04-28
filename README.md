@@ -1,7 +1,7 @@
 # Competitive Writing & Grading SQL Project
 
 ## Project Overview
-**Project Title:** Competitive Grading Analysis  
+**Project Title:** Competitive Writing & Grading Analysis  
 **Level:** Intermediate  
 **Database:** COMPETITIVE_GRADING
 
@@ -66,7 +66,7 @@ SELECT Name, `Content_A (30%)`
 FROM `uneg recruitment 2024&2025`
 WHERE `Content_A (30%)` > 25;
 ```
-**Candidates:** 9 candidates scored above 25.
+**Candidates:** 7 candidates scored above 25.
 
 ### 2.5 Display the names and departments of candidates who had no penalty
 ```sql
@@ -89,7 +89,7 @@ SELECT Name, `Mechanics_Avg (20%)`
 FROM `uneg recruitment 2024&2025`
 WHERE `Mechanics_Avg (20%)` > 15;
 ```
-**Candidates:** 18 candidates have Mechanics average > 15.
+**Candidates:** 15 candidates have Mechanics average > 15.
 
 ---
 
@@ -101,10 +101,8 @@ SELECT Department, COUNT(*) AS Stud
 FROM `uneg recruitment 2024&2025`
 GROUP BY Department;
 ```
-**Top Departments:**
+**Top Department:**
 - Pharmacy: 6 candidates
-- Nursing: 3 candidates
-- Law: 3 candidates
 
 ### 3.2 Retrieve candidates with negative penalty (Penalty_Avg < 0)
 ```sql
@@ -112,7 +110,7 @@ SELECT Name, Penalty_Avg
 FROM `uneg recruitment 2024&2025`
 WHERE Penalty_Avg < 0;
 ```
-**Candidates with penalties:** 15 candidates.
+**Candidates with penalties:** 27 candidates.
 
 ### 3.3 Display candidates who scored above 80 in their Net_Avg
 ```sql
@@ -120,7 +118,7 @@ SELECT Name, `Net_Avg(100%)`
 FROM `uneg recruitment 2024&2025`
 WHERE `Net_Avg(100%)` > 80;
 ```
-**High Scorers:** 8 candidates.
+**High Scorers:** 6 candidates.
 
 ### 3.4 Find candidates whose Content_A score is greater than Structure_A score
 ```sql
@@ -128,7 +126,7 @@ SELECT Name
 FROM `uneg recruitment 2024&2025`
 WHERE `Content_A (30%)` > `Structure_A (20%)`;
 ```
-**Candidates:** 25 candidates have better Content_A scores.
+**Candidates:** 27 candidates have better Content_A scores.
 
 ---
 
@@ -148,7 +146,7 @@ FROM `uneg recruitment 2024&2025`
 GROUP BY Department;
 ```
 **Top Department by Avg Net_Avg:**
-- Pharmacy: ~79.3
+- Electrical engineering: ~87.5
 
 ### 4.3 Identify departments with average Net_Avg greater than 85
 ```sql
@@ -157,7 +155,9 @@ FROM `uneg recruitment 2024&2025`
 GROUP BY Department
 HAVING AVG(`Net_Avg(100%)`) > 85;
 ```
-**Departments:** None crossed 85 on average.
+**Departments:** 
+- Electrical Engineering: 87.5
+- Biomedical Engineering: 86.5
 
 ---
 
@@ -175,7 +175,9 @@ SELECT Name, `Content_A (30%)`, `Content_B (30%)`
 FROM `uneg recruitment 2024&2025`
 WHERE `Content_B (30%)` - `Content_A (30%)` >= 5;
 ```
-**Candidates improved by 5+ points:** 8 candidates.
+**Candidates improved by 5+ points:** 2 candidates.
+- Noah Peterson: A-	21, B- 27
+- Henry Foster: A- 15, B- 27
 
 ### 5.3 Find the candidate with the highest Penalty_B deduction
 ```sql
@@ -184,7 +186,9 @@ FROM `uneg recruitment 2024&2025`
 ORDER BY Penalty_B
 LIMIT 1;
 ```
-**Most penalized:** Logan Brooks (-20 points).
+**Most penalized:** There is a tie:
+- Logan Brooks (-20 points).
+- Andrew Simmons: (-20 points).
 
 ---
 
@@ -205,8 +209,6 @@ SELECT Name, `Total_Avg(100%)`, `Net_Avg(100%)`,
 FROM `uneg recruitment 2024&2025`
 WHERE `Total_Avg(100%)` <> `Net_Avg(100%)`;
 ```
-**Largest penalty impact:** -40 points (Logan Brooks).
-
 ---
 
 ## 7. Violation Analysis
@@ -227,8 +229,7 @@ GROUP BY Violation
 ORDER BY Occurrences DESC;
 ```
 **Most common violations:**
-- `E(i)`, `E(ii)`, `E(iii)`, `C(i)`
-
+- `E(v)`
 ---
 
 ## 8. Reporting View Creation
@@ -252,15 +253,41 @@ SELECT * FROM Candidate_Summary;
 
 # 📈 Findings Summary
 - **Top Performer:** Alice Thompson
-- **Largest Penalty Impact:** Logan Brooks
+- **Largest Penalty Impact:** Logan Brooks and Andrew Simmons
 - **Strongest Department:** Pharmacy (highest participation)
-- **Most Common Violation:** `E(i)`, `E(ii)`, `E(iii)`
+- **Most Common Violation:** `E(v)`, 
+---
+
+## 📚 Conclusion
+
+This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, ranking, and business-driven SQL queries.  
+The findings from this project help drive better decision-making by understanding competititive writing; thereby showing candidate performance, penalty impacts, departmental strengths, and violation patterns.
 
 ---
 
-## 👨‍💻 Author
-**Lorreta Anyika**  
-Growing portfolio in Data Analytics focused on real-world SQL analysis, ranking, penalties, and reporting.
+## 🚀 How to Use
+- **Clone the Repository:** Download or clone this project repository from GitHub.
+- **Set Up the Database:** Run the SQL scripts provided in the section 1.0 of the `COMPETITIVE WRITING.sql` file to create the database.
+- **Download and import dataaset**: Download the 'UNEG RECRUITMENT 2024&2025.csv' file. Import the dataset using the data import wizard in MySQL
+- **Run the Queries:** Use the SQL queries provided in the `COMPETITIVE WRITING.sql` file to perform your analysis.
+- **Explore and Modify:** Feel free to adjust queries to answer new business questions or perform deeper analysis.
 
 ---
+
+## 👨‍💻 Author - Lorreta Anyika @ ALU DATATOK
+
+This project is part of the ALU DATATOK portfolio, showcasing the essential SQL skills every aspiring data analyst should master.  
+If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
+
+---
+
+## 🌐 Stay Updated and Join Our Community
+For more content on SQL, data analysis, and related fields, connect with ALU DATATOK:
+
+- **YouTube:** [Youtube](https://www.youtube.com/channel/UCQL3Wg_j3D5TWtn6ticnTsg) Subscribe for tutorials and insights
+- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/uchechukwu-lorreta-anyika-7b5b4a253/) Connect professionally
+- **WhatsApp:** [WhatsApp](https://chat.whatsapp.com/LhAFCcplWbf0MYfyShJTgf) Gain access to peers and resources
+
+Thank you for your support — we look forward to learning and growing with you! 🚀
+
 
